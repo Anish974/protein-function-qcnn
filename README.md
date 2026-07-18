@@ -73,9 +73,7 @@ protein-function-qcnn/
 │   └── model.py                             # reusable model + load_model() + predict()
 ├── models/
 │   └── hybrid_qnn_protein_model.pt          # trained weights (state_dict)
-├── test_model.py                            # load model + predict on a sequence
-└── docs/
-    └── mini_project_report.pdf              # dissertation report
+└── test_model.py                            # load model + predict on a sequence
 ```
 
 ## Installation
@@ -163,7 +161,7 @@ index `0` is reserved for padding/unknown. Sequences are truncated/padded to
 
 Convergence is smooth and monotonic with a small train/validation gap, indicating no
 notable overfitting. Loss/accuracy curves, evaluation metrics, and the confusion
-matrix are reported in `docs/mini_project_report.pdf` (Chapter 5).
+matrix are produced by the notebook (`notebooks/hybrid_qnn_final.ipynb`).
 
 ## Reproducibility Notes
 
@@ -176,7 +174,7 @@ matrix are reported in `docs/mini_project_report.pdf` (Chapter 5).
 
 ## Code & Data Availability
 
-The complete source code, trained model, and dissertation report are available in this
+The complete source code and trained model are available in this
 repository: **https://github.com/Anish974/protein-function-qcnn**.
 The dataset is publicly available at
 **https://www.kaggle.com/datasets/anish1137/protein-classification-dataset**.

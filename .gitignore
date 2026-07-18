@@ -12,6 +12,9 @@ env/
 *.csv
 protein_top10_cleaned.csv
 
+# Docs (kept local, not published)
+docs/*.pdf
+
 # OS
 .DS_Store
 Thumbs.db
