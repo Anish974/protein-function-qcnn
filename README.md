@@ -41,9 +41,9 @@ biological sequence analysis.
 The dataset is publicly available on Kaggle and is downloaded programmatically via
 `kagglehub` inside the notebook (no manual download required).
 
-- **Dataset:** *Protein Data Set* by *shahir* — derived from the RCSB Protein Data Bank (PDB).
-- **URL:** https://www.kaggle.com/datasets/shahir/protein-data-set
-- **`kagglehub` id:** `shahir/protein-data-set`
+- **Dataset:** *Protein Classification Dataset* — derived from the RCSB Protein Data Bank (PDB).
+- **URL:** https://www.kaggle.com/datasets/anish1137/protein-classification-dataset
+- **`kagglehub` id:** `anish1137/protein-classification-dataset`
 - **Files used:** `pdb_data_no_dups.csv` (141,401 rows), `pdb_data_seq.csv` (467,304 rows).
 
 **Preprocessing (in this repo):** the two files are merged on `structureId`
@@ -179,7 +179,7 @@ matrix are reported in `docs/mini_project_report.pdf` (Chapter 5).
 The complete source code, trained model, and dissertation report are available in this
 repository: **https://github.com/Anish974/protein-function-qcnn**.
 The dataset is publicly available at
-**https://www.kaggle.com/datasets/shahir/protein-data-set**.
+**https://www.kaggle.com/datasets/anish1137/protein-classification-dataset**.
 A citable, versioned archive with a DOI can be minted from a GitHub release via Zenodo
 (add the DOI badge above once created).
 
