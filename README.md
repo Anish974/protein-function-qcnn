@@ -188,7 +188,7 @@ A citable, versioned archive with a DOI can be minted from a GitHub release via 
 If you use this code, please cite the associated manuscript:
 
 ```
-Patankar A., Nagendra K., Patle I., Chintawar M., Pimpalkar A.
+Pimpalkar A., Patankar A., Nagendra K., Patle I., Chintawar M.
 "Hybrid Quantum–Classical Modeling Using CNN Embeddings and a Multi-Layer Deep
 Variational Quantum Classifier for Accurate Multi-Class Protein Sequence
 Classification." 2025–2026.
