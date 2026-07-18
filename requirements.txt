@@ -1,0 +1,9 @@
+torch
+pennylane
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+tqdm
+kagglehub

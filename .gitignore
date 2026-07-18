@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (regenerated via kagglehub / notebook)
+*.csv
+protein_top10_cleaned.csv
+
+# OS
+.DS_Store
+Thumbs.db
