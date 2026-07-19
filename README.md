@@ -72,7 +72,9 @@ protein-function-qcnn/
 ├── src/
 │   └── model.py                             # reusable model + load_model() + predict()
 ├── models/
-│   └── hybrid_qnn_protein_model.pt          # trained weights (state_dict)
+│   └── hybrid_qnn_protein_model.pt          # trained weights (state_dict, q_layers=4)
+├── figures/                                 # confusion matrix, per-class metrics, class dist.
+├── generate_figures.py                      # rebuild val split + regenerate all figures
 └── test_model.py                            # load model + predict on a sequence
 ```
 
@@ -154,14 +156,24 @@ index `0` is reserved for padding/unknown. Sequences are truncated/padded to
 
 ## Results
 
-| Metric | Train | Validation |
-|--------|-------|-----------|
-| Accuracy | 87.84% | **86.55%** |
-| Loss | 0.3976 | 0.4675 |
+All metrics are measured on the held-out validation split (20%, n = 50,155) using the
+shipped checkpoint (`q_layers=4`).
 
-Convergence is smooth and monotonic with a small train/validation gap, indicating no
-notable overfitting. Loss/accuracy curves, evaluation metrics, and the confusion
-matrix are produced by the notebook (`notebooks/hybrid_qnn_final.ipynb`).
+| Metric | Validation |
+|--------|-----------|
+| Accuracy | **84.97%** |
+| Macro-average F1 | 0.81 |
+| Weighted-average F1 | 0.85 |
+
+Per-class precision / recall / F1, the confusion matrix (raw and row-normalized) and the
+class distribution are in [`figures/`](figures/); the full table is in
+[`figures/classification_report.txt`](figures/classification_report.txt). The strongest
+class is RIBOSOME (F1 0.98); the hardest is TRANSCRIPTION (F1 0.64), consistent with the
+class imbalance. Regenerate all figures with `python generate_figures.py`.
+
+Loss/accuracy-vs-epoch curves are produced by running the training notebook end-to-end
+(`notebooks/hybrid_qnn_final.ipynb`); they are not committed because the shipped
+checkpoint's per-epoch history was not logged.
 
 ## Reproducibility Notes
 
