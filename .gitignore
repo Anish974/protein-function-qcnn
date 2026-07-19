@@ -11,6 +11,8 @@ env/
 # Data (regenerated via kagglehub / notebook)
 *.csv
 protein_top10_cleaned.csv
+# keep the committed per-class metrics table
+!figures/metrics.csv
 
 # Docs (kept local, not published)
 docs/*.pdf
