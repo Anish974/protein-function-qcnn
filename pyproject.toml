@@ -1,0 +1,26 @@
+[project]
+
+name = "hqnn-protein-classification"
+
+version = "1.0.0"
+
+description = "Hybrid Quantum Classical Protein Classification"
+
+authors = [
+
+    {name="Amit Pimpalkar"}
+
+]
+
+requires-python = ">=3.11"
+
+dependencies = [
+]
+
+[tool.black]
+
+line-length = 88
+
+[tool.isort]
+
+profile="black"
