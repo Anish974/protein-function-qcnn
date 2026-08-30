@@ -1,7 +1,7 @@
 """Generate result figures + performance metrics for the hybrid QNN.
 
 Produces (into ./figures/):
-  - confusion_matrix.png           counts heatmap on the validation split
+  - confusion_matrix.png           counts heatmap on the held-out test set split
   - confusion_matrix_normalized.png  row-normalized (recall) heatmap
   - per_class_metrics.png          precision / recall / F1 bar chart
   - class_distribution.png         class balance of the Top-10 dataset
@@ -9,7 +9,7 @@ Produces (into ./figures/):
   - metrics.csv                    same, machine-readable
 
 All figures are computed from the shipped q_layers=4 checkpoint: the script
-rebuilds the exact validation split used in training and runs the model on it,
+rebuilds the exact held-out test set split used in training and runs the model on it,
 so it needs the dataset (local `data/` CSVs, else kagglehub) and the weights in
 models/.
 
@@ -30,7 +30,7 @@ os.makedirs(FIG_DIR, exist_ok=True)
 
 
 def rebuild_val_split():
-    """Reproduce the exact top-10 dataframe and validation split from training."""
+    """Reproduce the exact top-10 dataframe and held-out test set split from training."""
     import pandas as pd
 
     # Prefer local CSVs (data/); fall back to kagglehub download.
@@ -100,7 +100,7 @@ def plot_confusion_and_metrics(y_true, y_pred):
     plt.figure(figsize=(9, 7.5))
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
                 xticklabels=CLASSES, yticklabels=CLASSES, cbar_kws={"label": "Count"})
-    plt.title("Confusion Matrix (Validation Set)")
+    plt.title("Confusion Matrix (held-out test set)")
     plt.xlabel("Predicted"); plt.ylabel("True")
     plt.xticks(rotation=45, ha="right"); plt.yticks(rotation=0)
     plt.tight_layout(); plt.savefig(f"{FIG_DIR}/confusion_matrix.png", dpi=150); plt.close()
@@ -119,7 +119,7 @@ def plot_confusion_and_metrics(y_true, y_pred):
                                        target_names=CLASSES, digits=4)
     with open(f"{FIG_DIR}/classification_report.txt", "w") as f:
         acc = (y_true == y_pred).mean()
-        f.write(f"Validation accuracy: {acc:.4f}  (n={len(y_true)})\n\n")
+        f.write(f"Held-out test set accuracy: {acc:.4f}  (n={len(y_true)})\n\n")
         f.write(report_txt)
     print("saved: classification_report.txt")
 
@@ -142,7 +142,7 @@ def plot_confusion_and_metrics(y_true, y_pred):
     plt.bar(x + w, f1, w, label="F1-score", color="#55a868")
     plt.xticks(x, CLASSES, rotation=45, ha="right")
     plt.ylim(0, 1.05); plt.ylabel("Score")
-    plt.title("Per-Class Performance Metrics (Validation Set)")
+    plt.title("Per-Class Performance Metrics (held-out test set)")
     plt.legend(); plt.grid(axis="y", alpha=0.3); plt.tight_layout()
     plt.savefig(f"{FIG_DIR}/per_class_metrics.png", dpi=150); plt.close()
     print("saved: per_class_metrics.png, metrics.csv")
